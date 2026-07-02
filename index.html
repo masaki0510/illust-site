@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASHIMOTO DESIGN | イラスト・Live2D ポートフォリオ</title>
+<meta name="description" content="NASHIMOTO DESIGN — Vtuberイラスト・Live2Dを一括対応するイラストレーターのポートフォリオ。三面図・ロゴ制作も承っています。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ==========================================================
+     Design tokens — 画廊風 × モネの淡い光 × 木目 × 梨色
+     ========================================================== */
+  :root{
+    --wood-1:#efe3cd;
+    --wood-2:#e4d2ac;
+    --wood-line: rgba(122, 92, 52, 0.14);
+    --paper:#fbf6ea;
+    --ink:#3c3229;
+    --ink-soft:#6b5d4c;
+    --nashi:#dbe4a8;
+    --nashi-deep:#aebd6d;
+    --monet-blue:#c3d3dd;
+    --monet-lilac:#d9cfe0;
+    --spotlight: rgba(255, 250, 230, 0.9);
+    --gold: #b9925a;
+    --shadow: 0 18px 40px rgba(70, 50, 20, 0.18);
+    --radius-frame: 4px;
+    --focus-ring: #7a6a3f;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    font-family:"Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+    color:var(--ink);
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--wood-1) 0px,
+        var(--wood-2) 38px,
+        var(--wood-1) 76px
+      );
+    background-attachment:fixed;
+    line-height:1.8;
+  }
+
+  a{ color:inherit; }
+
+  img{ max-width:100%; display:block; }
+
+  h1, h2, h3{
+    font-family:"Shippori Mincho", serif;
+    font-weight:700;
+    margin:0;
+    letter-spacing:.04em;
+  }
+
+  .brand{
+    font-family:"Cormorant Garamond", serif;
+    letter-spacing:.18em;
+  }
+
+  .eyebrow{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    letter-spacing:.12em;
+    color:var(--ink-soft);
+    font-size:.95rem;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 clamp(1.2rem, 4vw, 3rem);
+  }
+
+  /* focus visibility across the whole site */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible{
+    outline:3px solid var(--focus-ring);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* skip link */
+  .skip-link{
+    position:absolute;
+    left:-999px;
+    top:auto;
+    background:var(--paper);
+    color:var(--ink);
+    padding:.8em 1.2em;
+    z-index:200;
+    border-radius:0 0 6px 0;
+  }
+  .skip-link:focus{
+    left:0;
+    top:0;
+  }
+
+  /* ==========================================================
+     Header / Nav
+     ========================================================== */
+  header.site-header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(251, 246, 234, 0.86);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--wood-line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:.9rem clamp(1.2rem, 4vw, 3rem);
+  }
+  .logo{
+    font-size:1.15rem;
+    display:flex;
+    align-items:baseline;
+    gap:.4em;
+  }
+  .logo .cat{ font-size:1rem; }
+  nav.main-nav ul{
+    display:flex;
+    gap:clamp(.8rem, 2vw, 2rem);
+    list-style:none;
+    margin:0;
+    padding:0;
+    font-size:.92rem;
+  }
+  nav.main-nav a{
+    text-decoration:none;
+    padding:.3em .1em;
+    border-bottom:2px solid transparent;
+    transition:border-color .25s ease, color .25s ease;
+  }
+  nav.main-nav a:hover{
+    border-color:var(--nashi-deep);
+    color:var(--ink);
+  }
+
+  /* ==========================================================
+     Hero
+     ========================================================== */
+  .hero{
+    position:relative;
+    padding:clamp(4.5rem, 12vw, 8rem) 0 clamp(3.5rem, 8vw, 6rem);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.55), transparent 55%),
+      radial-gradient(ellipse at 75% 60%, var(--monet-lilac) 0%, transparent 60%),
+      radial-gradient(ellipse at 15% 80%, var(--monet-blue) 0%, transparent 55%);
+    opacity:.55;
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    text-align:center;
+    max-width:720px;
+    margin:0 auto;
+  }
+  .hero .eyebrow{ display:block; margin-bottom:1rem; }
+  .hero h1{
+    font-size:clamp(2.1rem, 6vw, 3.4rem);
+    line-height:1.4;
+  }
+  .hero h1 span{
+    display:block;
+    font-size:.5em;
+    color:var(--ink-soft);
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-weight:500;
+    letter-spacing:.08em;
+    margin-top:.6em;
+  }
+  .hero-cta{
+    margin-top:2.4rem;
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:.85em 1.9em;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:.95rem;
+    letter-spacing:.05em;
+    transition:transform .25s ease, box-shadow .25s ease;
+    border:1px solid var(--gold);
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+  .btn.primary{
+    background:linear-gradient(135deg, var(--nashi), var(--nashi-deep));
+    color:var(--ink);
+    border-color:transparent;
+  }
+  .btn.ghost{
+    background:transparent;
+    color:var(--ink);
+  }
+
+  /* コンテンツを常に手前に出すためのスタッキング基準
+     （猫・足跡はこれらより背面＝ページの背景側で動く） */
+  main, footer.site-footer{
+    position:relative;
+    z-index:5;
+  }
+
+  /* black cat motif — scroll に合わせてゆっくり歩き回る、背景側の案内役 */
+  .roam-cat{
+    position:fixed;
+    left:0;
+    top:0;
+    font-size:1.7rem;
+    z-index:2;
+    opacity:.75;
+    pointer-events:none;
+    will-change:transform;
+    transition:transform 1.4s cubic-bezier(.3,.7,.3,1);
+    filter:drop-shadow(0 6px 8px rgba(60,40,20,.25));
+  }
+  .paw{
+    position:fixed;
+    left:0;
+    top:0;
+    font-size:.8rem;
+    z-index:1;
+    pointer-events:none;
+    opacity:.45;
+    transition:opacity 1.1s ease;
+  }
+  .paw.fade{ opacity:0; }
+  @media (prefers-reduced-motion: reduce){
+    .roam-cat, .paw{ display:none; }
+  }
+
+  /* section shared */
+  section{ padding:clamp(3.5rem, 8vw, 6rem) 0; }
+  .section-head{
+    text-align:center;
+    margin-bottom:clamp(2.2rem, 6vw, 3.5rem);
+  }
+  .section-head h2{ font-size:clamp(1.6rem, 4vw, 2.2rem); }
+  .section-head .eyebrow{ display:block; margin-bottom:.6rem; }
+
+  /* ==========================================================
+     Gallery — グリッドなし、額装した作品を余白多めに配置
+     ========================================================== */
+  .gallery{
+    background:rgba(251, 246, 234, 0.4);
+    border-top:1px solid var(--wood-line);
+    border-bottom:1px solid var(--wood-line);
+  }
+  .gallery-wall{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:clamp(1.8rem, 4vw, 3.2rem) clamp(1.4rem, 3vw, 2.6rem);
+  }
+  .frame{
+    all:unset;
+    cursor:pointer;
+    display:block;
+    width:clamp(180px, 24vw, 260px);
+    background:#fffdf8;
+    padding:.9rem;
+    border-radius:var(--radius-frame);
+    box-shadow:0 10px 24px rgba(70,50,20,.14);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .frame:nth-child(2n){ margin-top:2.2rem; }
+  .frame:nth-child(3n){ margin-top:-1rem; }
+  .frame:hover, .frame:focus-visible{
+    transform:translateY(-6px) scale(1.02);
+    box-shadow:0 22px 40px rgba(70,50,20,.22), 0 0 40px var(--spotlight);
+  }
+  .frame .art{
+    aspect-ratio: 3 / 4;
+    border-radius:2px;
+    overflow:hidden;
+    display:block;
+  }
+  .frame .art svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .frame figcaption{
+    margin-top:.7rem;
+    font-size:.85rem;
+    text-align:center;
+    color:var(--ink-soft);
+  }
+
+  /* lightbox — 選んだ作品が手前にせり出す演出 */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:2rem;
+    background:rgba(35, 27, 18, 0.7);
+    backdrop-filter:blur(2px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s ease;
+  }
+  .lightbox.is-open{ opacity:1; visibility:visible; }
+  .lightbox-panel{
+    position:relative;
+    max-width:min(720px, 90vw);
+    width:100%;
+    background:var(--paper);
+    padding:1.4rem;
+    border-radius:6px;
+    transform:scale(.85) translateY(20px);
+    box-shadow:0 30px 70px rgba(0,0,0,.4), 0 0 120px var(--spotlight);
+    transition:transform .4s cubic-bezier(.2,.9,.3,1.2);
+  }
+  .lightbox.is-open .lightbox-panel{ transform:scale(1) translateY(0); }
+  .lightbox-panel .art{
+    aspect-ratio: 4 / 3;
+    border-radius:3px;
+    overflow:hidden;
+    background:var(--wood-1);
+  }
+  .lightbox-panel .art svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .lightbox-caption{
+    margin-top:1rem;
+    color:var(--ink-soft);
+    font-size:.95rem;
+  }
+  .lightbox-close{
+    position:absolute;
+    top:-14px;
+    right:-14px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid var(--wood-line);
+    background:var(--paper);
+    font-size:1.1rem;
+    cursor:pointer;
+    box-shadow:0 6px 14px rgba(0,0,0,.2);
+  }
+
+  /* ==========================================================
+     About
+     ========================================================== */
+  .about-inner{
+    display:grid;
+    grid-template-columns: minmax(160px, 220px) 1fr;
+    gap:clamp(1.5rem, 4vw, 3rem);
+    align-items:start;
+  }
+  .avatar{
+    aspect-ratio:1;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff, var(--nashi) 60%, var(--nashi-deep));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:3rem;
+    box-shadow:var(--shadow);
+    border:4px solid var(--paper);
+  }
+  .about-name{
+    font-size:1.4rem;
+    margin-bottom:.3rem;
+  }
+  .about-role{
+    color:var(--ink-soft);
+    margin-bottom:1.2rem;
+  }
+  .about-bio{
+    background:rgba(255,255,255,.5);
+    border:1px dashed var(--wood-line);
+    border-radius:6px;
+    padding:1.2rem 1.4rem;
+    color:var(--ink-soft);
+    font-size:.95rem;
+  }
+  .about-blocks{
+    margin-top:1.8rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:1.2rem;
+  }
+  .about-block h3{
+    font-size:1rem;
+    margin-bottom:.5rem;
+  }
+  .about-block ul{
+    margin:0;
+    padding-left:1.1em;
+    color:var(--ink-soft);
+    font-size:.92rem;
+  }
+  .placeholder-note{
+    display:inline-block;
+    margin-top:.6rem;
+    font-size:.78rem;
+    color:var(--gold);
+    border:1px solid var(--gold);
+    border-radius:999px;
+    padding:.15em .8em;
+  }
+
+  /* ==========================================================
+     Contact
+     ========================================================== */
+  .contact{
+    background:var(--paper);
+    border-top:1px solid var(--wood-line);
+  }
+  .menu-cards{ margin-bottom:2.6rem; }
+  .menu-row{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:1.4rem;
+  }
+  .menu-row + .menu-row{ margin-top:1.4rem; }
+  .menu-row-secondary{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .menu-row-secondary .menu-card{
+    flex:1 1 240px;
+    max-width:320px;
+  }
+  .menu-card{
+    background:#fffdf8;
+    border:1px solid var(--wood-line);
+    border-radius:8px;
+    padding:1.4rem;
+    box-shadow:0 8px 20px rgba(70,50,20,.08);
+  }
+  .menu-card h3{ font-size:1.02rem; margin-bottom:.5rem; }
+  .menu-card p{ margin:0; color:var(--ink-soft); font-size:.9rem; }
+
+  .form-embed{
+    border:1px dashed var(--wood-line);
+    border-radius:8px;
+    padding:2.4rem 1.5rem;
+    text-align:center;
+    color:var(--ink-soft);
+    background:rgba(255,255,255,.5);
+  }
+
+  /* ==========================================================
+     Footer
+     ========================================================== */
+  footer{
+    padding:3rem 0 2.4rem;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.88rem;
+  }
+  .sns-links{
+    display:flex;
+    justify-content:center;
+    gap:1.1rem;
+    margin-bottom:1.2rem;
+    list-style:none;
+    padding:0;
+  }
+  .sns-links a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--wood-line);
+    text-decoration:none;
+    background:var(--paper);
+    transition:transform .25s ease, background .25s ease;
+  }
+  .sns-links a:hover{ transform:translateY(-3px); background:var(--nashi); }
+  footer .brand{ font-size:.95rem; letter-spacing:.14em; }
+  footer .cat{ opacity:.7; }
+
+  @media (max-width: 640px){
+    .about-inner{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+    .avatar{ width:140px; }
+    nav.main-nav ul{ font-size:.8rem; gap:.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="logo">
+      <span aria-hidden="true" class="cat">🐈‍⬛</span>
+      <span class="brand">NASHIMOTO DESIGN</span>
+    </div>
+    <nav class="main-nav" aria-label="サイト内メニュー">
+      <ul>
+        <li><a href="#gallery">ギャラリー</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">ご依頼</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Illustration &amp; Live2D Atelier</span>
+      <h1>
+        絵から、動きまで。<br>ひとつの物語として。
+        <span>Vtuberイラスト × Live2D 制作を、企画から一括でお受けします。</span>
+      </h1>
+      <div class="hero-cta">
+        <a class="btn primary" href="#gallery">作品を見る</a>
+        <a class="btn ghost" href="#contact">依頼する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Gallery ============ -->
+  <section id="gallery" class="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Gallery</span>
+        <h2>ギャラリー</h2>
+      </div>
+
+      <div class="gallery-wall">
+        <!-- 作品カードはプレースホルダー。実画像は images/ に配置して差し替え -->
+        <button class="frame" type="button" data-title="作品タイトル 01" data-note="キャラクターイラスト">
+          <span class="art">
+            <svg viewBox="0 0 160 200" role="img" aria-label="パステルカラーのキャラクターイラスト サンプル1">
+              <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#eaf1f4"/><stop offset="1" stop-color="#dbe4a8"/>
+              </linearGradient></defs>
+              <rect width="160" height="200" fill="url(#bg1)"/>
+              <path d="M36,150 Q80,126 124,150 L132,200 L28,200 Z" fill="#c3d3dd"/>
+              <circle cx="80" cy="92" r="44" fill="#ffe9d6"/>
+              <path d="M32,80 Q80,26 128,80 Q132,116 120,100 Q100,66 80,66 Q60,66 40,100 Q28,116 32,80 Z" fill="#7a5a43"/>
+              <circle cx="65" cy="94" r="5" fill="#3c3229"/>
+              <circle cx="95" cy="94" r="5" fill="#3c3229"/>
+              <path d="M68,110 Q80,118 92,110" stroke="#3c3229" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <figcaption>作品タイトル 01</figcaption>
+        </button>
+        <button class="frame" type="button" data-title="作品タイトル 02" data-note="Live2Dモデル(動画準備中)">
+          <span class="art">
+            <svg viewBox="0 0 160 200" role="img" aria-label="猫耳をつけたキャラクターイラスト サンプル2(Live2D想定)">
+              <defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f1ecf5"/><stop offset="1" stop-color="#d9cfe0"/>
+              </linearGradient></defs>
+              <rect width="160" height="200" fill="url(#bg2)"/>
+              <path d="M36,150 Q80,126 124,150 L132,200 L28,200 Z" fill="#dbe4a8"/>
+              <path d="M40,58 L54,20 L66,60 Z" fill="#8c6f8f"/>
+              <path d="M120,58 L106,20 L94,60 Z" fill="#8c6f8f"/>
+              <circle cx="80" cy="94" r="44" fill="#fff1e6"/>
+              <path d="M34,82 Q80,34 126,82 Q128,110 116,96 Q100,68 80,68 Q60,68 44,96 Q32,110 34,82 Z" fill="#8c6f8f"/>
+              <circle cx="65" cy="96" r="5" fill="#3c3229"/>
+              <circle cx="95" cy="96" r="5" fill="#3c3229"/>
+              <path d="M75,108 L80,113 L85,108" stroke="#3c3229" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <figcaption>作品タイトル 02 ・ Live2D</figcaption>
+        </button>
+        <button class="frame" type="button" data-title="作品タイトル 03" data-note="キャラクターイラスト">
+          <span class="art">
+            <svg viewBox="0 0 160 200" role="img" aria-label="ショートヘアのキャラクターイラスト サンプル3">
+              <defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#eef6f3"/><stop offset="1" stop-color="#c3d3dd"/>
+              </linearGradient></defs>
+              <rect width="160" height="200" fill="url(#bg3)"/>
+              <path d="M36,150 Q80,126 124,150 L132,200 L28,200 Z" fill="#b9925a"/>
+              <circle cx="80" cy="92" r="44" fill="#ffe9d6"/>
+              <path d="M30,76 Q80,30 130,76 Q126,60 108,50 Q90,42 80,44 Q70,42 52,50 Q34,60 30,76 Z" fill="#3f6b63"/>
+              <circle cx="65" cy="94" r="5" fill="#3c3229"/>
+              <circle cx="95" cy="94" r="5" fill="#3c3229"/>
+              <path d="M68,110 Q80,116 92,110" stroke="#3c3229" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <figcaption>作品タイトル 03</figcaption>
+        </button>
+        <button class="frame" type="button" data-title="作品タイトル 04" data-note="三面図">
+          <span class="art">
+            <svg viewBox="0 0 160 200" role="img" aria-label="三面図サンプル(正面・側面・背面のラインアート)">
+              <rect width="160" height="200" fill="#eef3f6"/>
+              <g stroke="#c3d3dd" stroke-width="1">
+                <line x1="0" y1="50" x2="160" y2="50"/><line x1="0" y1="100" x2="160" y2="100"/><line x1="0" y1="150" x2="160" y2="150"/>
+                <line x1="40" y1="0" x2="40" y2="200"/><line x1="80" y1="0" x2="80" y2="200"/><line x1="120" y1="0" x2="120" y2="200"/>
+              </g>
+              <g fill="none" stroke="#6b5d4c" stroke-width="2.4" stroke-linecap="round">
+                <circle cx="26" cy="86" r="12"/><line x1="26" y1="98" x2="26" y2="150"/><line x1="26" y1="112" x2="10" y2="140"/><line x1="26" y1="112" x2="42" y2="140"/>
+                <circle cx="80" cy="86" r="12"/><line x1="80" y1="98" x2="80" y2="150"/><line x1="80" y1="112" x2="64" y2="140"/><line x1="80" y1="112" x2="96" y2="140"/>
+                <circle cx="134" cy="86" r="12"/><line x1="134" y1="98" x2="134" y2="150"/><line x1="134" y1="112" x2="118" y2="140"/><line x1="134" y1="112" x2="150" y2="140"/>
+              </g>
+            </svg>
+          </span>
+          <figcaption>作品タイトル 04 ・ 三面図</figcaption>
+        </button>
+        <button class="frame" type="button" data-title="作品タイトル 05" data-note="ロゴ制作">
+          <span class="art">
+            <svg viewBox="0 0 160 200" role="img" aria-label="梨と黒猫をモチーフにしたロゴマークのサンプル">
+              <defs><linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#e4d2ac"/>
+              </linearGradient></defs>
+              <rect width="160" height="200" fill="url(#bg5)"/>
+              <path d="M80,60 C50,60 42,92 48,116 C54,140 68,150 80,150 C92,150 106,140 112,116 C118,92 110,60 80,60 Z" fill="#dbe4a8" stroke="#aebd6d" stroke-width="2"/>
+              <path d="M80,60 C74,48 78,38 90,34" fill="none" stroke="#7a5a43" stroke-width="3" stroke-linecap="round"/>
+              <path d="M64,96 Q80,86 96,96" fill="none" stroke="#3c3229" stroke-width="2" stroke-linecap="round"/>
+              <text x="80" y="180" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="16" fill="#6b5d4c">NASHIMOTO</text>
+            </svg>
+          </span>
+          <figcaption>作品タイトル 05 ・ ロゴ</figcaption>
+        </button>
+        <button class="frame" type="button" data-title="作品タイトル 06" data-note="キャラクターイラスト">
+          <span class="art">
+            <svg viewBox="0 0 160 200" role="img" aria-label="とんがり帽子をかぶったキャラクターイラスト サンプル6">
+              <defs><linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f5eef6"/><stop offset="1" stop-color="#dbe4a8"/>
+              </linearGradient></defs>
+              <rect width="160" height="200" fill="url(#bg6)"/>
+              <path d="M36,150 Q80,126 124,150 L132,200 L28,200 Z" fill="#8c6f8f"/>
+              <circle cx="80" cy="98" r="42" fill="#fff1e6"/>
+              <path d="M40,74 L80,10 L120,74 Q80,58 40,74 Z" fill="#3c3229"/>
+              <circle cx="80" cy="10" r="6" fill="#dbe4a8"/>
+              <circle cx="66" cy="100" r="5" fill="#3c3229"/>
+              <circle cx="94" cy="100" r="5" fill="#3c3229"/>
+              <path d="M69,114 Q80,120 91,114" stroke="#3c3229" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <figcaption>作品タイトル 06</figcaption>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- lightbox: 拡大表示（選んだ作品が手前にせり出す演出） -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+    <div class="lightbox-panel">
+      <button class="lightbox-close" type="button" id="lightbox-close" aria-label="閉じる">✕</button>
+      <div class="art" id="lightbox-art" aria-hidden="true"></div>
+      <p class="lightbox-caption" id="lightbox-title"></p>
+      <p class="lightbox-caption" id="lightbox-note"></p>
+    </div>
+  </div>
+
+  <!-- ============ About ============ -->
+  <section id="about">
+    <div class="wrap about-inner">
+      <div class="avatar" aria-hidden="true">🐈‍⬛</div>
+      <div>
+        <p class="about-name">〈ペンネーム未定〉</p>
+        <p class="about-role">Illustrator / Live2D Creator — NASHIMOTO DESIGN</p>
+        <div class="about-bio">
+          自己紹介文はここに入ります。活動歴・絵を描き始めたきっかけ・Vtuber/Live2Dを専門にした経緯などを、本人の言葉で綴っていただく想定です。
+          <span class="placeholder-note">本文差し替え予定</span>
+        </div>
+
+        <div class="about-blocks">
+          <div class="about-block">
+            <h3>使用ツール</h3>
+            <ul>
+              <li>準備中</li>
+            </ul>
+          </div>
+          <div class="about-block">
+            <h3>資格</h3>
+            <ul>
+              <li>準備中</li>
+            </ul>
+            <span class="placeholder-note">枠のみ確保</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Contact ============ -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Commission</span>
+        <h2>依頼窓口</h2>
+      </div>
+
+      <div class="menu-cards">
+        <div class="menu-row">
+          <div class="menu-card">
+            <h3>イラスト制作</h3>
+            <p>キャラクターデザイン・立ち絵など、イラスト単体でのご依頼。</p>
+          </div>
+          <div class="menu-card">
+            <h3>イラスト制作 &amp; Live2D制作</h3>
+            <p>イラストから動く化まで、企画〜納品を一括でお受けします。</p>
+          </div>
+          <div class="menu-card">
+            <h3>Live2D制作</h3>
+            <p>すでにあるイラストを動かしたい方向けのLive2D制作のみのご依頼。</p>
+          </div>
+        </div>
+        <div class="menu-row menu-row-secondary">
+          <div class="menu-card">
+            <h3>三面図</h3>
+            <p>Live2D/モデリング用の資料や、他イラストレーターへの依頼資料としての三面図制作。</p>
+          </div>
+          <div class="menu-card">
+            <h3>ロゴ制作</h3>
+            <p>チャンネルロゴ、配信タイトルロゴなどの制作。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-embed">
+        Googleフォーム埋め込み予定エリア
+        <div class="placeholder-note">フォームURL未確定</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <ul class="sns-links" aria-label="SNSリンク">
+    <li><a href="#" aria-label="X（Twitter）">𝕏</a></li>
+    <li><a href="#" aria-label="Instagram">IG</a></li>
+    <li><a href="#" aria-label="pixiv">P</a></li>
+  </ul>
+  <p class="brand">NASHIMOTO DESIGN</p>
+  <p class="cat" aria-hidden="true">🐈‍⬛ 🍐</p>
+  <p>&copy; 2026 NASHIMOTO DESIGN</p>
+</footer>
+
+<script>
+(function () {
+  var frames = document.querySelectorAll('.frame');
+  var lightbox = document.getElementById('lightbox');
+  var lbArt = document.getElementById('lightbox-art');
+  var lbTitle = document.getElementById('lightbox-title');
+  var lbNote = document.getElementById('lightbox-note');
+  var closeBtn = document.getElementById('lightbox-close');
+  var lastFocused = null;
+
+  function cloneArt(svg) {
+    var clone = svg.cloneNode(true);
+    var idMap = {};
+    clone.querySelectorAll('[id]').forEach(function (el) {
+      var newId = el.id + '-lb';
+      idMap[el.id] = newId;
+      el.id = newId;
+    });
+    clone.querySelectorAll('*').forEach(function (el) {
+      ['fill', 'stroke'].forEach(function (attr) {
+        var val = el.getAttribute(attr);
+        if (val && val.indexOf('url(#') === 0) {
+          var oldId = val.slice(5, -1);
+          if (idMap[oldId]) el.setAttribute(attr, 'url(#' + idMap[oldId] + ')');
+        }
+      });
+    });
+    return clone;
+  }
+
+  function openLightbox(frame) {
+    lastFocused = frame;
+    lbTitle.textContent = frame.dataset.title || '';
+    lbNote.textContent = frame.dataset.note || '';
+    lbArt.innerHTML = '';
+    var svg = frame.querySelector('.art svg');
+    if (svg) lbArt.appendChild(cloneArt(svg));
+    lightbox.hidden = false;
+    requestAnimationFrame(function () {
+      lightbox.classList.add('is-open');
+    });
+    closeBtn.focus();
+    document.addEventListener('keydown', onKeydown);
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.removeEventListener('keydown', onKeydown);
+    setTimeout(function () { lightbox.hidden = true; }, 350);
+    if (lastFocused) lastFocused.focus();
+  }
+
+  function onKeydown(e) {
+    if (e.key === 'Escape') closeLightbox();
+  }
+
+  frames.forEach(function (frame) {
+    frame.addEventListener('click', function () { openLightbox(frame); });
+  });
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+})();
+
+/* ==========================================================
+   黒猫の案内役 — スクロールに合わせて縦横無尽に歩き回り、
+   4歩分だけ足跡を残す(5歩目で最古の足跡がフェードアウト)
+   ========================================================== */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var cat = document.createElement('div');
+  cat.className = 'roam-cat';
+  cat.setAttribute('aria-hidden', 'true');
+  cat.textContent = '🐈‍⬛'; /* 🐈‍⬛ */
+  document.body.appendChild(cat);
+
+  var footprints = [];
+  var lastPos = null;
+  var direction = 1;
+  var stepDistance = 110; /* この距離だけビューポート上で移動したら1歩とみなす */
+  var maxFootprints = 4;
+
+  function computePos(scrollY, vw, vh) {
+    return {
+      x: vw * (0.5 + 0.46 * Math.sin(scrollY / 860)),
+      y: vh * (0.52 + 0.42 * Math.cos(scrollY / 730))
+    };
+  }
+
+  function addFootprint(pos, angleDeg) {
+    var paw = document.createElement('span');
+    paw.className = 'paw';
+    paw.setAttribute('aria-hidden', 'true');
+    paw.textContent = '🐾'; /* 🐾 */
+    paw.style.transform =
+      'translate(' + (pos.x - 8) + 'px,' + (pos.y + 16) + 'px) rotate(' + angleDeg + 'deg)';
+    document.body.appendChild(paw);
+    footprints.push(paw);
+    if (footprints.length > maxFootprints) {
+      var oldest = footprints.shift();
+      oldest.classList.add('fade');
+      setTimeout(function () { oldest.remove(); }, 1200);
+    }
+  }
+
+  function update() {
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var pos = computePos(window.scrollY, vw, vh);
+
+    if (lastPos) {
+      var dx = pos.x - lastPos.x, dy = pos.y - lastPos.y;
+      var dist = Math.hypot(dx, dy);
+      if (dist > stepDistance) {
+        var angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        addFootprint(lastPos, angle);
+        direction = dx < 0 ? -1 : 1;
+        lastPos = pos;
+      }
+    } else {
+      lastPos = pos;
+    }
+
+    cat.style.transform =
+      'translate(' + (pos.x - 16) + 'px,' + (pos.y - 16) + 'px) scaleX(' + direction + ')';
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(function () { update(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
+})();
+</script>
+
+</body>
+</html>
